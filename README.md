@@ -22,3 +22,16 @@ cd tangent_leave_app_solution
 ```
 python manage.py migrate
 ```
+
+7. We can now startup the server
+```
+python manage.py runserver localhost:8010
+```
+## Backend Operation
+
+First of all, we need to add employees to the system
+
+<http://localhost:8010/admin/add-employee/>
+
+
+

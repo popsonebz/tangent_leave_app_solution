@@ -4,5 +4,5 @@ from django.conf.urls import url
 
 urlpatterns = [
     
-    url(r'^admin/$', newEmployee, name='admin'),
+    url(r'^add-employee/$', newEmployee, name='admin'),
 ]
