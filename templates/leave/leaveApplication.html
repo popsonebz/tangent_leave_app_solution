@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Leave Application{% endblock %}
+
+{% block content %}
+
+{% include 'navigation.html'%}
+
+<div class="container">
+   
+ 
+   <div class="row row-content">
+           <div class="col-sm-6 col-sm-offset-3">
+              <h3>Leave Application Form</h3>
+            </div>
+            <div class="col-sm-6 col-sm-offset-3">
+
+                <form class="form-horizontal" role="form" action="." method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <label for="start_date" class="col-sm-2 control-label">Start Date</label>
+                        <div class="col-sm-10">
+                            <input class="form-control req" type="text" id="start_date" name="start_date" placeholder="" required>
+                            {{ form.errors.start_date }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date" class="col-sm-2 control-label">End Date</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control req" id="end_date" name="end_date" placeholder="" required>
+                            {{ form.errors.end_date }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" id="submit" >Submit Request</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <span id="other_errors" name="other_errors" type ="hidden"> {{ form.errors.other_errors}}</span>
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+             <div class="col-xs-12 col-sm-3">
+                <p style="padding:20px;"></p>
+            </div>
+       </div>
+</div>
+{% endblock %} 
+
+{% block javascript %}
+<script>
+  $( function() {
+    $( "#start_date" ).datepicker();
+    $( "#end_date" ).datepicker();
+  } );
+  </script>
+{% endblock %}
+
