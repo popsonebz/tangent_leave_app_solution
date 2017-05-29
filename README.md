@@ -6,12 +6,15 @@
 pip install -r requirements.txt
 ```
 3. As this is a mini application, SQLite Database was used.
+
 4. open a terminal and clone the repository as follows:
 ```
 git clone https://github.com/popsonebz/tangent_leave_app_solution.git
 ```
 This creates a folder called tangent_leave_app_solution in the current directory.
+
 5. switch to that directory
+
 ```
 cd tangent_leave_app_solution
 ```
