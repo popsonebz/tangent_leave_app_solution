@@ -22,11 +22,11 @@ def newEmployee(request):
             username = form['username'].value()
             password = form['password'].value()
             first_name = form['first_name'].value()
-            print type(form['employment_date'].value())
-            print form['employment_date'].value()
+            last_name = form['last_name'].value()
+        
             new_user = User.objects.create_user(username=username,
                                  first_name = first_name,
-                                 password=password)
+                                 password=password, last_name = last_name)
             new_user.save()
 
             user = User.objects.get(username=username)
