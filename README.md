@@ -57,5 +57,11 @@ Note:
 - Notify the user when there is no working days within the specified period.
 - Preventing duration which exceeds the maximum 18 days of leave allocated.
 
+### Automatically Decline the following leave application:
+
+- Employees who have not spent up to 3 months in the company from appying for leave.
+- Employee who has exhausted his leave.
+- Employee taking more than the remaining leave days he has.
+
 
 
