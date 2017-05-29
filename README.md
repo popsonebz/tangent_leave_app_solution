@@ -46,8 +46,16 @@ Note:
 
 2. He/She is redirected to the login page for authentication
 
+3. If Authentication is successful, the application page is displayed.
 
+4. On selecting the start and end dates, the following are checked:
 
+- Both either start or end date or end date cannot be less than the current date.
+- The end date cannot be less than the start date.
+- Start date cannot later than end date.
+- End date cannot be the same as start date.
+- Notify the user when there is no working days within the specified period.
+- Preventing duration which exceeds the maximum 18 days of leave allocated.
 
 
 
