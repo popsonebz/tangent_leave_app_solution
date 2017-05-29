@@ -27,11 +27,27 @@ python manage.py migrate
 ```
 python manage.py runserver localhost:8010
 ```
-## Backend Operation
+## Admin Operation
 
 First of all, we need to add employees to the system
 
 <http://localhost:8010/admin/add-employee/>
+
+Note:
+
+1. By default, all employees have 18 days of leave.
+2. This page was just added based on initiative as it was not specified in the task.
+
+## Employee Operation
+
+1. To apply for leave, the employee visits this url
+
+<http://localhost:8010/leave/apply>
+
+2. He/She is redirected to the login page for authentication
+
+
+
 
 
 
