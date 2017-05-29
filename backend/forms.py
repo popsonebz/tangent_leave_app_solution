@@ -19,7 +19,6 @@ class EmployeeForm(forms.ModelForm):
         cleaned_data = super(EmployeeForm, self).clean()
         employment_date = cleaned_data.get("employment_date")
         
-
         return cleaned_data
         
     

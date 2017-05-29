@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
-from django.shortcuts import render, render_to_response, redirect
-from django.contrib.auth.models import User
-from leave.models import employee
-
-from forms import EmployeeForm
 from datetime import date, datetime
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+
+from leave.models import employee
+from forms import EmployeeForm
+
 
 # Create your views here.
 
@@ -18,8 +18,7 @@ def newEmployee(request):
         form = EmployeeForm(request.POST)
 
         if form.is_valid():
-            #form = form.save(commit=False)
-            #form.save()
+            
             username = form['username'].value()
             password = form['password'].value()
             first_name = form['first_name'].value()
@@ -34,7 +33,6 @@ def newEmployee(request):
             obj = employee()
             obj.user_id = user.id
             obj.employment_date = datetime.strptime(str(request.POST['employment_date']), '%m/%d/%Y').strftime('%Y-%m-%d')
-            #obj.employment_date = datetime.strptime(request.POST['employment_date'], '%m/%d/%y').strftime('%Y-%m-%d')
             obj.save()
             return redirect('leave:login')
 

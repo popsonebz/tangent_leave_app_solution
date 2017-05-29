@@ -2,19 +2,14 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, render_to_response, redirect
-from django.template import RequestContext
-from leave.forms import LeaveForm
-from datetime import date, datetime
-
+from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import employee, leave
-from django.core.urlresolvers import reverse
+
+from leave.forms import LeaveForm
+from .models import employee
 
 # Create your views here.
-
-def main_page(request):
-    return render_to_response('home.html', RequestContext(request))
 
 @login_required(login_url='/leave/login/')
 def leave(request):
@@ -43,6 +38,3 @@ def leave(request):
     else:
     	form = LeaveForm()
     return render(request, 'leave/leaveApplication.html', {'form':form})
-
-def employee(request):
-    return render_to_response('leave/leaveApplication.html')
