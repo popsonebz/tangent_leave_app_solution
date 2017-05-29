@@ -32,9 +32,9 @@ def newEmployee(request):
             user = User.objects.get(username=username)
             obj = employee()
             obj.user_id = user.id
-            obj.employment_date = datetime.strptime(str(request.POST['employment_date']), '%m/%d/%Y').strftime('%Y-%m-%d')
+            obj.employment_date = request.POST['employment_date']
             obj.save()
-            return redirect('leave:login')
+            return redirect('backend:admin')
 
     else:
     	form = EmployeeForm()

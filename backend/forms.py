@@ -1,12 +1,13 @@
 from django import forms
 from django.contrib.auth.models import User
 from functools import partial
+from Hr import settings
 
 
 DateInput = partial(forms.DateInput, {'class': 'datepicker'})
 
 class EmployeeForm(forms.ModelForm): 
-    employment_date = forms.DateField(input_formats=["%m/%d/%Y"])
+    employment_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
 
     class Meta:
         model = User
