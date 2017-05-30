@@ -7,13 +7,19 @@ from django.test.client import Client
 from selenium import webdriver
 from django.core.urlresolvers import reverse
 import time
+from datetime import datetime
 
+from django.contrib.auth.models import User
+from leave.models import employee
 
 
 class LeaveApplication(TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome("/home/popoola/Documents/tangent/solution/tangent_leave_app_solution/leave/chromedriver")
+        
 
+        
+        
     def tearDown(self):
         self.browser.quit()
 
@@ -23,21 +29,21 @@ class LeaveApplication(TestCase):
         
         time.sleep(3)
         username = self.browser.find_element_by_id("id_username")
-        username.send_keys('pop')
+        username.send_keys('kate')
 
         password = self.browser.find_element_by_id("id_password")
-        password.send_keys('pop')
+        password.send_keys('kate')
 
         self.browser.find_element_by_id("login").submit()
 
         start_date = self.browser.find_element_by_id("start_date")
         time.sleep(3)
-        ActionChains(self.browser).move_to_element(start_date).click().send_keys('01/06/2017').perform()
+        ActionChains(self.browser).move_to_element(start_date).click().send_keys('03/06/2017').perform()
 
         
         end_date = self.browser.find_element_by_id("end_date")
         time.sleep(3)
-        ActionChains(self.browser).move_to_element(end_date).click().send_keys('04/06/2017').perform()
+        ActionChains(self.browser).move_to_element(end_date).click().send_keys('08/06/2017').perform()
 
         self.browser.find_element_by_id("submit").submit()
         
@@ -49,10 +55,10 @@ class LeaveApplication(TestCase):
         
         time.sleep(3)
         username = self.browser.find_element_by_id("id_username")
-        username.send_keys('john')
+        username.send_keys('ben')
 
         password = self.browser.find_element_by_id("id_password")
-        password.send_keys('john')
+        password.send_keys('ben')
 
         self.browser.find_element_by_id("login").submit()
 
@@ -76,21 +82,21 @@ class LeaveApplication(TestCase):
         
         time.sleep(3)
         username = self.browser.find_element_by_id("id_username")
-        username.send_keys('peter')
+        username.send_keys('kate')
 
         password = self.browser.find_element_by_id("id_password")
-        password.send_keys('peter')
+        password.send_keys('kate')
 
         self.browser.find_element_by_id("login").submit()
 
         start_date = self.browser.find_element_by_id("start_date")
         time.sleep(3)
-        ActionChains(self.browser).move_to_element(start_date).click().send_keys('01/06/2017').perform()
+        ActionChains(self.browser).move_to_element(start_date).click().send_keys('01/07/2017').perform()
 
         
         end_date = self.browser.find_element_by_id("end_date")
         time.sleep(3)
-        ActionChains(self.browser).move_to_element(end_date).click().send_keys('30/06/2017').perform()
+        ActionChains(self.browser).move_to_element(end_date).click().send_keys('30/07/2017').perform()
 
         self.browser.find_element_by_id("submit").submit()
         
@@ -102,21 +108,21 @@ class LeaveApplication(TestCase):
         
         time.sleep(3)
         username = self.browser.find_element_by_id("id_username")
-        username.send_keys('mark')
+        username.send_keys('kate')
 
         password = self.browser.find_element_by_id("id_password")
-        password.send_keys('mark')
+        password.send_keys('kate')
 
         self.browser.find_element_by_id("login").submit()
 
         start_date = self.browser.find_element_by_id("start_date")
         time.sleep(3)
-        ActionChains(self.browser).move_to_element(start_date).click().send_keys('01/05/2017').perform()
+        ActionChains(self.browser).move_to_element(start_date).click().send_keys('29/05/2017').perform()
 
         
         end_date = self.browser.find_element_by_id("end_date")
         time.sleep(3)
-        ActionChains(self.browser).move_to_element(end_date).click().send_keys('01/10/2017').perform()
+        ActionChains(self.browser).move_to_element(end_date).click().send_keys('10/06/2017').perform()
 
         self.browser.find_element_by_id("submit").submit()
         
