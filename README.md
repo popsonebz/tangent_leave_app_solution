@@ -63,5 +63,27 @@ Note:
 - Employee who has exhausted his leave.
 - Employee taking more than the remaining leave days he has.
 
+## Selenium Functional Test
 
+Note: To use the functional test, the following needs to be done:
+1. Chrome webdriver needs to be downloaden and placed into the folder path (tanget_leave_app_solution/leave/)
+
+2. The webdriver path needs to be set accordingly as seen in leave/test.py (the current path only works on my laptop).
+
+3. Open the link <http://localhost:8010/admin/add-employee/>
+
+4. Create the following users:
+```
+first name = kate, last name = perry, employment date = 01/01/2017, username = kate, password= kate
+
+```
+```
+first name = ben, last name = carson, employment date = 29/05/2017, username = ben, password= ben
+
+```
+
+3. Then run the command:
+```
+   python manage.py test
+```
 
