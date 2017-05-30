@@ -5,13 +5,14 @@ from functools import partial
 from datetime import date, datetime
 from workdays import networkdays
 from django.contrib.auth.models import User
+from Hr import settings
 
 
 DateInput = partial(forms.DateInput, {'class': 'datepicker'})
 
 class LeaveForm(forms.ModelForm):
-    start_date = forms.DateField(input_formats=["%m/%d/%Y"])
-    end_date = forms.DateField(input_formats=["%m/%d/%Y"])
+    start_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    end_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
     error_css_class = 'error'
     user = None
 
