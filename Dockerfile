@@ -2,7 +2,7 @@ FROM python:2.7.14-jessie
 
 WORKDIR /usr/src/app
 
-COPY tangent_leave_app_solution ./
+COPY . .
 
 #COPY requirements.txt ./
 
