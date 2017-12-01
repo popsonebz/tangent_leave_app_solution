@@ -5,7 +5,7 @@ sudo apt-get upgrade -y
 
 sudo apt-get install -y python-pip python-dev build-essential
 sudo pip install --upgrade pip
-sudo pip install awscli --upgrade --user 
+sudo apt install awscli -y 
 
 wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
