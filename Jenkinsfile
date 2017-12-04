@@ -1,4 +1,6 @@
 env.BUILD_NUMBER=env.BUILD_NUMBER
+def branch = env.BRANCH_NAME
+
 node {
     //get latest change in code
     stage ("Get Latest Code") {
@@ -17,7 +19,7 @@ node {
     }
     //deploy
     stage ("Deploy") {
-        if (BRANCH_NAME == 'master') {
+        if ($branch == 'master') {
             echo 'I only execute on the master branch'
         } else {
             echo BRANCH_NAME
