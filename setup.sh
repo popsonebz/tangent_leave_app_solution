@@ -21,3 +21,8 @@ sudo groupadd docker
 sudo gpasswd -a $USER docker
 sudo usermod -aG docker jenkins
 sudo service jenkins restart
+
+#install kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.7.5/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
