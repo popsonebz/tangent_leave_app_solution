@@ -3,5 +3,8 @@ node {
     stage ("Get Latest Code") {
         checkout scm
     }
-    
+    //get build dockerfile
+    stage ("build dockerfile") {
+        sh "docker build -t tangent -f Dockerfile ."
+    }
  }
