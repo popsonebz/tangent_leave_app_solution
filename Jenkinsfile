@@ -17,7 +17,7 @@ node {
     }
     //deploy
     stage ("Deploy") {
-        if (BRANCH_NAME == 'master') {
+        if (env.BRANCH_NAME == 'master') {
             echo 'I only execute on the master branch'
         } else {
             echo 'env.BRANCH_NAME'
