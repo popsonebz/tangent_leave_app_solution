@@ -1,4 +1,5 @@
 env.BUILD_NUMBER=env.BUILD_NUMBER
+env.BRANCH_NAME=env.BRANCH_NAME
 node {
     //get latest change in code
     stage ("Get Latest Code") {
@@ -17,10 +18,10 @@ node {
     }
     //deploy
     stage ("Deploy") {
-        if (env.BRANCH_NAME == 'master') {
+        if ($BRANCH_NAME == 'master') {
             echo 'I only execute on the master branch'
         } else {
-            echo env.BRANCH_NAME
+            echo $BRANCH_NAME
             sh "kubectl set image --namespace=test-jenkin-dev deployment/test-jenkin-dev test=931871148456.dkr.ecr.eu-west-1.amazonaws.com/test:dev-$BUILD_NUMBER"
         }
     }
