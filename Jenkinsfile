@@ -20,6 +20,8 @@ node {
     //deploy
     stage ("Deploy") {
               sh "whoami"
+              sh "sudo -u ubuntu -s"
+              sh "whoami"
               sh "kubectl version"
             //sh "kubectl set image --namespace=test-jenkin-dev deployment/test-jenkin-dev test=931871148456.dkr.ecr.eu-west-1.amazonaws.com/test:dev-$BUILD_NUMBER" 
                 }
