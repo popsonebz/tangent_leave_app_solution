@@ -22,6 +22,17 @@ sudo gpasswd -a $USER docker
 sudo usermod -aG docker jenkins
 sudo service jenkins restart
 
+#change jenkins default user
+sudo gpasswd -a $USER jenkins
+sed -i '/JENKINS_USER=$NAME/s/$NAME/ubuntu/g' /etc/default/jenkins
+sudo chown -R ubuntu:ubuntu /var/lib/jenkins
+sudo chown -R ubuntu:ubuntu /var/log/jenkins
+sudo chown -R ubuntu:ubuntu /var/cache/jenkins
+sudo chown -R ubuntu:ubuntu /var/run/jenkins
+sudo chown -R ubuntu:ubuntu /usr/share/jenkins
+sudo chmod -R 777 /usr/share/jenkins
+sudo service jenkins restart
+
 #install kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.7.5/bin/linux/amd64/kubectl
 chmod +x ./kubectl
