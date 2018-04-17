@@ -9,8 +9,8 @@ tail -n 0 -f *.log &
 
 # Start Gunicorn processes
 echo Starting Gunicorn.
-exec gunicorn exporter.wsgi:application \
-    --name exporter \
+exec gunicorn Hr.wsgi:application \
+    --name Hr \
     --bind 0.0.0.0:1234 \
     --workers 3 \
     --log-level=info \
