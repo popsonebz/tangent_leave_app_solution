@@ -1,13 +1,33 @@
-FROM python:2.7.14-jessie
+FROM python:2.7.14
 
-WORKDIR /usr/src/app
+EXPOSE 1234
 
-COPY . .
+RUN apt-get update
+RUN apt-get install -y swig libssl-dev dpkg-dev netcat git
 
-#COPY requirements.txt ./
+RUN mkdir /code
+
+WORKDIR /code
+
+COPY requirements.txt ./
+
+RUN git clone https://github.com/popsonebz/tangent_leave_app_solution.git
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-#COPY . .
+RUN cd tangent_leave_app_solution
+#COPY . /code/
 
-CMD [ "python", "manage.py migrate" ]
+RUN python manage.py migrate
+
+ENV DJANGO_ENV=prod
+
+ENV DOCKER_CONTAINER=1
+
+COPY entry_point.sh .
+
+#RUN chmod u+x entry_point.sh
+
+#CMD ["sh", "entry_point.sh"]
+
+CMD ["python manage.py runserver localhost:1234"]
