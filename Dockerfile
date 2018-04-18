@@ -30,4 +30,4 @@ COPY entry_point.sh .
 
 #CMD ["sh", "entry_point.sh"]
 
-CMD ["python manage.py runserver localhost:1234"]
+CMD ["python manage.py runserver 0.0.0.0:1234"]
