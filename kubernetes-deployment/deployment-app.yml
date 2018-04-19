@@ -1,0 +1,38 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: leave-app-deployment
+  namespace: tan-app
+  labels:
+    env: dev
+  annotations: #used to attach data
+    scaleDown: '0'
+    scaleUp: '1'
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 2
+  template:
+    metadata:
+      labels:
+        app: leave-app
+    spec:
+      containers:
+        - name: leave-app
+          image: docker.io/ebenezer/leave:v2
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 1234
+          resources:
+            # keep request = limit to keep this container in guaranteed class
+            limits:
+              cpu: 100m
+              memory: 400Mi
+            requests:
+              cpu: 50m
+              memory: 200Mi
+          
