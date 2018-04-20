@@ -9,24 +9,29 @@
 ```
 kubectl config use-context minikube
 ```
-2. Create the namespace for the app.
+2. Apply the namespace for the app.
 
 ```
 kubectl apply -f namespace.yml
 ```
-3. Create the deployment 
+3. apply the deployment 
 ```
 kubectl apply -f deployment-app.yml
 ```
-4. Create the service
+4. Check if the pod is up and running
 ```
-kubectl apply -f Service.yml
+kubectl get service -n tan-app
 ```
-5. Expose the deployment so you can access it from your browser
+5. Create the network policy
 ```
+kubectl apply -f networkpolicy.yml
+```
+6. Expose the deployment so you can access it from your browser
+```
+kubectl expose deployment leave-nginx-deployment -n tan-app --type=NodePort
 kubectl expose deployment leave-app-deployment -n tan-app --type=NodePort
 ```
-6. Expose the service on minikube
+7. Expose the service on minikube
 ```
 minikube service leave-app-service -n tan-app
 ```
@@ -38,6 +43,7 @@ You should see something like this
 ```
 NAME                   CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
 leave-app-deployment   10.0.0.105   <nodes>       1234:31825/TCP   46m
+leave-nginx-deployment   10.0.0.105   <nodes>       1234:31825/TCP   46m
 ```
 Note the port mapping e.g 1234:31825, you will need it
 
@@ -47,7 +53,3 @@ minikube ip
 ```
 copy this IP address
 
-9. From step 7 and 8, we now have the ip address and nodeport with which we can visit our app e.g
-```
-http://192.168.99.100:31825/leave/login/
-```
