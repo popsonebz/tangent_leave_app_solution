@@ -9,33 +9,42 @@
 ```
 kubectl config use-context minikube
 ```
-2. Apply the namespace for the app.
+2. Use your terminal to navigate into app-deployment directory
+
+3. Apply the namespace for the app.
 
 ```
 kubectl apply -f namespace.yml
 ```
-3. apply the deployment 
+4. apply the deployment 
 ```
 kubectl apply -f deployment-app.yml
 ```
-4. Check if the pod is up and running
+5. Check if the pod is up and running
 ```
 kubectl get service -n tan-app
 ```
-5. Create the network policy
+6. Create the network policy
 ```
 kubectl apply -f networkpolicy.yml
 ```
-6. Expose the deployment so you can access it from your browser
+7. Navigate into nginx-deployment directory
+
+8. Apply the nginx deployment
+```
+kubectl apply -f deployment-nginx.yml
+```
+
+9. Expose the deployment so you can access it from your browser
 ```
 kubectl expose deployment leave-nginx-deployment -n tan-app --type=NodePort
 kubectl expose deployment leave-app-deployment -n tan-app --type=NodePort
 ```
-7. Expose the service on minikube
+10. Expose the service on minikube
 ```
 minikube service leave-app-service -n tan-app
 ```
-7. Check the service and port mapping
+11. Check the service and port mapping
 ```
 kubectl get svc -n tan-app
 ```
@@ -47,9 +56,27 @@ leave-nginx-deployment   10.0.0.105   <nodes>       1234:31825/TCP   46m
 ```
 Note the port mapping e.g 1234:31825, you will need it
 
-8. Get the IP address of your minikube
+12. Get the IP address of your minikube
 ```
 minikube ip
 ```
 copy this IP address
 
+13. Navigate back into app-deployment directory
+
+14. Create an ingress resource
+```
+kubectl apply -f ingress.yml
+```
+15. Edit your hosts file to add the ip address of minikube and leave.com at the last line of the file e.g
+```
+192.168.99.100 leave.com
+```
+16. Open your *Chrome* browser and visit this url to register an employee
+```
+leave.com/admin/add-employee
+```
+17. The employee can now login using the url below and the details from the above step
+```
+leave.com/leave/apply
+```
