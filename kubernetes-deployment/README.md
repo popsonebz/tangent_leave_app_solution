@@ -64,19 +64,24 @@ copy this IP address
 
 13. Navigate back into app-deployment directory
 
-14. Create an ingress resource
+14. Enable ingress on the cluster
+
+```
+minikube addons enable ingress
+```
+15. Create an ingress resource
 ```
 kubectl apply -f ingress.yml
 ```
-15. Edit your hosts file to add the ip address of minikube and leave.com at the last line of the file e.g
+16. Edit your hosts file to add the ip address of minikube and leave.com at the last line of the file e.g
 ```
 192.168.99.100 leave.com
 ```
-16. Open your *Chrome* browser and visit this url to register an employee
+17. Open your *Chrome* browser and visit this url to register an employee
 ```
 leave.com/admin/add-employee
 ```
-17. The employee can now login using the url below and the details from the above step
+18. The employee can now login using the url below and the details from the above step
 ```
 leave.com/leave/apply
 ```
