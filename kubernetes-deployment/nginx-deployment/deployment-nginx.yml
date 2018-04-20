@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: leave-nginx
-          image: docker.io/ebenezer/leave-nginx:v1
+          image: docker.io/ebenezer/leave-nginx:v3
           imagePullPolicy: Always
           ports:
           - containerPort: 80
